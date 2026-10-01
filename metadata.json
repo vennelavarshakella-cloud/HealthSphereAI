@@ -1,0 +1,6 @@
+{
+  "name": "HealthSphere AI – Smart Preventive Healthcare Platform",
+  "description": "AI-powered preventive healthcare platform advancing SDG Goal 3 with real-time AI Health Guardian, family health records, women's wellness, elder care, and nutrition planning.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
