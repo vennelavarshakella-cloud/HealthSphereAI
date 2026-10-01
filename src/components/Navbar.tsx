@@ -26,6 +26,7 @@ import {
   LogOut,
   ChevronDown,
   Info,
+  MessageSquare,
 } from 'lucide-react';
 import { User, NotificationItem, ElderAccessibilityConfig } from '../types';
 
@@ -69,6 +70,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navLinks = [
     { id: 'home', label: 'Home', icon: Heart },
     { id: 'dashboard', label: 'Dashboard', icon: Activity },
+    { id: 'n8n-chat', label: 'n8n Chat', icon: MessageSquare, badge: 'AI' },
     { id: 'ai-guardian', label: 'AI Guardian', icon: Sparkles, badge: 'AI' },
     { id: 'family', label: 'Family', icon: Users },
     { id: 'womens-wellness', label: "Women's Health", icon: Smile },

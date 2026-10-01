@@ -100,6 +100,33 @@ app.get('/api/auth/users', (req: Request, res: Response) => {
   res.json(sanitized);
 });
 
+// n8n Webhook Chatbot Proxy
+app.post('/api/chat/n8n', async (req: Request, res: Response) => {
+  const webhookUrl = 'https://vennela0811.app.n8n.cloud/webhook/08661c6e-503c-438a-86e5-2b3acb1ed6d3/chat';
+  try {
+    const response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json, text/plain, */*',
+      },
+      body: JSON.stringify(req.body),
+    });
+
+    const contentType = response.headers.get('content-type') || '';
+    if (contentType.includes('application/json')) {
+      const data = await response.json();
+      return res.json(data);
+    } else {
+      const text = await response.text();
+      return res.json({ output: text });
+    }
+  } catch (err: any) {
+    console.error('n8n proxy error:', err);
+    res.status(500).json({ error: 'Failed to communicate with n8n chatbot: ' + err.message });
+  }
+});
+
 // 2. Health Guardian AI Evaluation
 app.post('/api/health-guardian/assess', async (req: Request, res: Response) => {
   try {

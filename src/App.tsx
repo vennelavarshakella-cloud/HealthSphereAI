@@ -7,6 +7,8 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { AuthModal } from './components/AuthModal';
+import { N8nChatWidget } from './components/N8nChatWidget';
+import { N8nChatPage } from './pages/N8nChatPage';
 import { HomePage } from './pages/HomePage';
 import { DashboardPage } from './pages/DashboardPage';
 import { AIHealthGuardianPage } from './pages/AIHealthGuardianPage';
@@ -528,6 +530,10 @@ export default function App() {
           />
         )}
 
+        {currentPage === 'n8n-chat' && (
+          <N8nChatPage currentUser={currentUser} />
+        )}
+
         {currentPage === 'ai-guardian' && (
           <AIHealthGuardianPage
             currentUser={currentUser}
@@ -655,6 +661,9 @@ export default function App() {
           setCurrentPage('dashboard');
         }}
       />
+
+      {/* Floating n8n Webhook Chatbot Widget */}
+      <N8nChatWidget currentUser={currentUser} />
     </div>
   );
 }
